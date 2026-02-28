@@ -47,9 +47,6 @@ tunnrl 3000
 
 # Custom local host
 tunnrl 8080 --host 127.0.0.1
-
-# Use PORT env var
-PORT=3000 tunnrl
 ```
 
 ### Options
