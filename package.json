@@ -32,8 +32,8 @@
     "tunnrl": "dist/index.js"
   },
   "scripts": {
-    "build": "tsc",
-    "prepare": "tsc",
+    "build": "tsc && node -e \"require('fs').copyFileSync('src/api.mjs','dist/api.mjs')\"",
+    "prepare": "npm run build",
     "start": "node dist/index.js",
     "dev": "ts-node src/index.ts"
   },
