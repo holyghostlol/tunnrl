@@ -1,0 +1,61 @@
+{
+  "name": "tunnrl",
+  "version": "1.0.0",
+  "description": "Expose localhost to the internet. Free. No signup. No time limit.",
+  "license": "MIT",
+  "keywords": [
+    "tunnel",
+    "localtunnel",
+    "ngrok",
+    "tunneling",
+    "localhost",
+    "expose",
+    "proxy"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/holyghostlol/tunnrl"
+  },
+  "homepage": "https://tunnrl.dev",
+  "engines": {
+    "node": ">=18"
+  },
+  "main": "dist/api.js",
+  "exports": {
+    ".": {
+      "import": "./dist/api.mjs",
+      "require": "./dist/api.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "tunnrl": "dist/index.js",
+    "tr": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepare": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts"
+  },
+  "files": [
+    "dist",
+    "src",
+    "tsconfig.json"
+  ],
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^12.1.0",
+    "qrcode": "^1.5.4",
+    "uuid": "^9.0.1",
+    "ws": "^8.17.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.9",
+    "@types/qrcode": "^1.5.6",
+    "@types/uuid": "^9.0.8",
+    "@types/ws": "^8.5.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3"
+  }
+}
