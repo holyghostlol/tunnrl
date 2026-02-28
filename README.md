@@ -1,6 +1,10 @@
 # tunnrl
 
-Expose `localhost` to the internet — instant HTTPS tunnels, no signup.
+Expose localhost to the internet. Free. No signup. No time limit.
+
+```
+npx tunnrl 3000
+```
 
 ```
 localhost:3000  →  https://kxp7mq.tunnrl.dev
@@ -8,11 +12,16 @@ localhost:3000  →  https://kxp7mq.tunnrl.dev
 
 ---
 
-## Quick start
+## Why tunnrl?
 
-```bash
-npx tunnrl 3000
-```
+- **No signup** — run the command, get a URL. That's it.
+- **No session limits** — your tunnel stays up as long as you need it.
+- **Auto-reconnect** — wifi drops? tunnrl reconnects with exponential backoff.
+- **Request logging** — color-coded status, method, path, duration, and size for every request.
+- **QR code** — share your tunnel from terminal to phone in one scan.
+- **Keyboard shortcuts** — quit, replay, copy URL, open browser — all one keypress.
+- **HTTPS included** — every tunnel gets a secure URL automatically.
+- **Tiny** — minimal dependencies, installs in seconds.
 
 ---
 
@@ -20,6 +29,12 @@ npx tunnrl 3000
 
 ```bash
 npm install -g tunnrl
+```
+
+Or run without installing:
+
+```bash
+npx tunnrl 3000
 ```
 
 ---
@@ -30,14 +45,11 @@ npm install -g tunnrl
 # Tunnel port 3000
 tunnrl 3000
 
-# Short alias
-tr 3000
+# Custom local host
+tunnrl 8080 --host 127.0.0.1
 
 # Use PORT env var
 PORT=3000 tunnrl
-
-# Custom local host
-tunnrl 8080 --host 127.0.0.1
 ```
 
 ### Options
@@ -49,41 +61,7 @@ tunnrl 8080 --host 127.0.0.1
 
 ---
 
-## URLs
-
-Each time you start tunnrl you get a new random URL. There is no subdomain persistence — if you disconnect and reconnect, your URL changes. Share the new URL each session.
-
----
-
-## Node.js API
-
-```js
-const tunnrl = require('tunnrl')
-// or: import tunnrl from 'tunnrl'
-
-const tunnel = await tunnrl({ port: 3000 })
-
-console.log(tunnel.url)  // https://abc123.tunnrl.dev
-
-tunnel.on('request', ({ method, path, status, duration }) => {
-  console.log(method, path, status, `${duration}ms`)
-})
-
-tunnel.on('close', () => console.log('tunnel closed'))
-
-tunnel.close()
-```
-
-**Options:**
-
-| Option | Type | Default | Description |
-|---|---|---|---|
-| `port` | `number` | required | Local port to expose |
-| `local_host` | `string` | `localhost` | Local hostname to forward to |
-
----
-
-## Output
+## What you get
 
 ```
   [QR code]
@@ -93,12 +71,47 @@ tunnel.close()
   Shortcuts   q quit   r replay last request   c copy URL   o open browser
 
   ──────────────────────────────────────────────────────────────
-  STATUS   METHOD   PATH   DURATION   SIZE
+  STATUS   METHOD   PATH                    DURATION   SIZE
   ──────────────────────────────────────────────────────────────
-  [14:32:01] 200  GET     /api/users   12ms   1.4 KB
-  [14:32:04] 201  POST    /api/posts   34ms   320 B
-  [14:32:08] 404  GET     /not-found   8ms    89 B
+  [14:32:01] 200  GET     /api/users              12ms   1.4 KB
+  [14:32:04] 201  POST    /api/posts              34ms   320 B
+  [14:32:08] 404  GET     /not-found              8ms    89 B
 ```
+
+---
+
+## Keyboard shortcuts
+
+| Key | Action |
+|---|---|
+| `q` | Quit and close the tunnel |
+| `r` | Replay the last request locally |
+| `c` | Copy the tunnel URL to clipboard |
+| `o` | Open the tunnel URL in your browser |
+
+---
+
+## Node.js API
+
+```js
+import tunnrl from 'tunnrl'
+
+const tunnel = await tunnrl({ port: 3000 })
+console.log(tunnel.url)  // https://abc123.tunnrl.dev
+
+tunnel.on('request', ({ method, path, status, duration }) => {
+  console.log(method, path, status, `${duration}ms`)
+})
+
+tunnel.close()
+```
+
+### Options
+
+| Option | Type | Default | Description |
+|---|---|---|---|
+| `port` | `number` | required | Local port to expose |
+| `local_host` | `string` | `localhost` | Local hostname to forward to |
 
 ---
 
