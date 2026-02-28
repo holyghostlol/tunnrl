@@ -29,8 +29,7 @@
     "./package.json": "./package.json"
   },
   "bin": {
-    "tunnrl": "dist/index.js",
-    "tr": "dist/index.js"
+    "tunnrl": "dist/index.js"
   },
   "scripts": {
     "build": "tsc",
