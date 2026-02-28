@@ -41,7 +41,8 @@
   "files": [
     "dist",
     "src",
-    "tsconfig.json"
+    "README.md",
+    "LICENSE"
   ],
   "dependencies": {
     "chalk": "^5.3.0",
