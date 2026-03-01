@@ -58,6 +58,9 @@ tunnrl 3000
 
 # Custom local host
 tunnrl 8080 --host 127.0.0.1
+
+# Show QR code on connect
+tunnrl 3000 --qr
 ```
 
 ### Options
@@ -66,14 +69,13 @@ tunnrl 8080 --host 127.0.0.1
 |---|---|---|
 | `[port]` | `$PORT` | Local port to expose |
 | `--host` | `localhost` | Local hostname to forward to |
+| `--qr` | off | Show QR code on connect |
 
 ---
 
 ## What you get
 
 ```
-  [QR code]
-
   ✔ Connected
   Forwarding  localhost:3000  →  https://kxp7mq.tunnrl.dev
   Shortcuts   q quit   r replay last request   c copy URL   o open browser

@@ -196,6 +196,7 @@ function forwardToLocal(
 
 interface TunnelOptions {
   host: string;
+  qr?: boolean;
 }
 
 async function startTunnel(port: number, opts: TunnelOptions): Promise<void> {
@@ -243,10 +244,12 @@ async function startTunnel(port: number, opts: TunnelOptions): Promise<void> {
       if (msg.type === 'registered') {
         tunnelUrl = msg.url;
         console.clear();
-        try {
-          const qr = await QRCode.toString(msg.url, { type: 'terminal', small: true, margin: 1 });
-          console.log(qr);
-        } catch { /* ignore */ }
+        if (opts.qr) {
+          try {
+            const qr = await QRCode.toString(msg.url, { type: 'terminal', small: true, margin: 1 });
+            console.log(qr);
+          } catch { /* ignore */ }
+        }
         console.log(chalk.green(`  ✔ Connected`));
         console.log(`  ${chalk.gray('Forwarding')}  ${chalk.white(`localhost:${port}`)}  →  ${chalk.bold.yellow(msg.url)}`);
         console.log(`  ${chalk.gray('Shortcuts')}   ${chalk.white('q')} quit   ${chalk.white('r')} replay last request   ${chalk.white('c')} copy URL   ${chalk.white('o')} open browser`);
@@ -396,6 +399,7 @@ program
   .version('1.0.0')
   .argument('[port]', 'Local port to tunnel (or set PORT env var)')
   .option('--host <host>', 'Local host to forward to', 'localhost')
+  .option('--qr', 'Show QR code on connect')
   .action((portArg: string | undefined, options: TunnelOptions) => {
     const raw = portArg ?? process.env.PORT;
     if (!raw) {
