@@ -1,5 +1,10 @@
 # tunnrl
 
+[![npm version](https://img.shields.io/npm/v/tunnrl)](https://www.npmjs.com/package/tunnrl)
+[![npm downloads](https://img.shields.io/npm/dw/tunnrl)](https://www.npmjs.com/package/tunnrl)
+[![license](https://img.shields.io/npm/l/tunnrl)](https://github.com/holyghostlol/tunnrl/blob/main/LICENSE)
+[![github stars](https://img.shields.io/github/stars/holyghostlol/tunnrl)](https://github.com/holyghostlol/tunnrl)
+
 Expose localhost to the internet. Free. No signup. No time limit.
 
 ```
@@ -22,6 +27,12 @@ localhost:3000  →  https://kxp7mq.tunnrl.dev
 - **Keyboard shortcuts** — quit, replay, copy URL, open browser — all one keypress.
 - **HTTPS included** — every tunnel gets a secure URL automatically.
 - **Tiny** — minimal dependencies, installs in seconds.
+
+---
+
+## How it works
+
+tunnrl establishes a WebSocket connection between your local CLI and a remote server at `tunnrl.dev`. The server acts as a public HTTPS proxy — it receives incoming requests on your tunnel URL, forwards them through the WebSocket to your machine, and sends responses back to the caller. Your local port never needs to be exposed directly.
 
 ---
 
