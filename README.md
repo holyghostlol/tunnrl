@@ -1,7 +1,7 @@
 # tunnrl
 
 [![npm version](https://img.shields.io/npm/v/tunnrl)](https://www.npmjs.com/package/tunnrl)
-[![npm downloads](https://img.shields.io/npm/dw/tunnrl)](https://www.npmjs.com/package/tunnrl)
+[![npm downloads](https://img.shields.io/npm/dt/tunnrl)](https://www.npmjs.com/package/tunnrl)
 [![license](https://img.shields.io/npm/l/tunnrl)](https://github.com/holyghostlol/tunnrl/blob/main/LICENSE)
 [![github stars](https://img.shields.io/github/stars/holyghostlol/tunnrl)](https://github.com/holyghostlol/tunnrl)
 
